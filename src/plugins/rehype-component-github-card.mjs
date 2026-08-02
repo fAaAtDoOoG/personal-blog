@@ -15,14 +15,15 @@ export function GithubCardComponent(properties, children) {
 			'Invalid directive. ("github" directive must be leaf type "::github{repo="owner/repo"}")',
 		]);
 
-	if (!properties.repo || !properties.repo.includes("/"))
+	const repo = typeof properties.repo === "string" ? properties.repo : "";
+	const repositoryPattern = /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38}[A-Za-z0-9])?\/[A-Za-z0-9](?:[A-Za-z0-9_.-]{0,98}[A-Za-z0-9_-])?$/;
+	if (Object.keys(properties).some(key => key !== "repo") || !repositoryPattern.test(repo) || repo.endsWith(".git"))
 		return h(
 			"div",
 			{ class: "hidden" },
 			'Invalid repository. ("repo" attributte must be in the format "owner/repo")',
 		);
 
-	const repo = properties.repo;
 	const cardUuid = `GC${Math.random().toString(36).slice(-6)}`; // Collisions are not important
 
 	const nAvatar = h(`div#${cardUuid}-avatar`, { class: "gc-avatar" });
@@ -58,22 +59,28 @@ export function GithubCardComponent(properties, children) {
 		`script#${cardUuid}-script`,
 		{ type: "text/javascript", defer: true },
 		`
-      fetch('https://api.github.com/repos/${repo}', { referrerPolicy: "no-referrer" }).then(response => response.json()).then(data => {
-        document.getElementById('${cardUuid}-description').innerText = data.description?.replace(/:[a-zA-Z0-9_]+:/g, '') || "Description not set";
-        document.getElementById('${cardUuid}-language').innerText = data.language;
-        document.getElementById('${cardUuid}-forks').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.forks).replaceAll("\u202f", '');
-        document.getElementById('${cardUuid}-stars').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.stargazers_count).replaceAll("\u202f", '');
-        const avatarEl = document.getElementById('${cardUuid}-avatar');
+      (() => {
+        const card = document.currentScript?.closest('a.card-github');
+        const repository = card?.dataset.githubRepo;
+        if (!card || !repository) return;
+        const [owner, name] = repository.split('/');
+        const endpoint = 'https://api.github.com/repos/' + encodeURIComponent(owner) + '/' + encodeURIComponent(name);
+        fetch(endpoint, { credentials: "omit", referrerPolicy: "no-referrer" }).then(response => response.json()).then(data => {
+        card.querySelector('.gc-description').innerText = data.description?.replace(/:[a-zA-Z0-9_]+:/g, '') || "Description not set";
+        card.querySelector('.gc-language').innerText = data.language;
+        card.querySelector('.gc-forks').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.forks).replaceAll("\u202f", '');
+        card.querySelector('.gc-stars').innerText = Intl.NumberFormat('en-us', { notation: "compact", maximumFractionDigits: 1 }).format(data.stargazers_count).replaceAll("\u202f", '');
+        const avatarEl = card.querySelector('.gc-avatar');
         avatarEl.style.backgroundImage = 'url(' + data.owner.avatar_url + ')';
         avatarEl.style.backgroundColor = 'transparent';
-        document.getElementById('${cardUuid}-license').innerText = data.license?.spdx_id || "no-license";
-        document.getElementById('${cardUuid}-card').classList.remove("fetch-waiting");
-        console.log("[GITHUB-CARD] Loaded card for ${repo} | ${cardUuid}.")
+        card.querySelector('.gc-license').innerText = data.license?.spdx_id || "no-license";
+        card.classList.remove("fetch-waiting");
+        console.log("[GITHUB-CARD] Loaded card", repository)
       }).catch(err => {
-        const c = document.getElementById('${cardUuid}-card');
-        c?.classList.add("fetch-error");
-        console.warn("[GITHUB-CARD] (Error) Loading card for ${repo} | ${cardUuid}.")
+        card.classList.add("fetch-error");
+        console.warn("[GITHUB-CARD] Failed to load card", repository)
       })
+      })()
     `,
 	);
 
@@ -83,7 +90,7 @@ export function GithubCardComponent(properties, children) {
 			class: "card-github fetch-waiting no-styling",
 			href: `https://github.com/${repo}`,
 			target: "_blank",
-			repo,
+			"data-github-repo": repo,
 		},
 		[
 			nTitle,
