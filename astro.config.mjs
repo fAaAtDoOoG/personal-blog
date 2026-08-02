@@ -154,6 +154,18 @@ export default defineConfig({
 		],
 	},
 	vite: {
+		optimizeDeps: {
+			include: [
+				"@swup/astro/serialise",
+				"@swup/astro/idle",
+				"@swup/astro/client/Swup",
+				"@swup/astro/client/SwupA11yPlugin",
+				"@swup/astro/client/SwupPreloadPlugin",
+				"@swup/astro/client/SwupScrollPlugin",
+				"@swup/astro/client/SwupHeadPlugin",
+				"@swup/astro/client/SwupScriptsPlugin",
+			],
+		},
 		build: {
 			rollupOptions: {
 				onwarn(warning, warn) {
