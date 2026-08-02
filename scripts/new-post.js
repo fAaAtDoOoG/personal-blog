@@ -15,12 +15,13 @@ function getDate() {
 const args = process.argv.slice(2)
 
 if (args.length === 0) {
-  console.error(`Error: No filename argument provided
-Usage: npm run new-post -- <filename>`)
+  console.error(`错误：请提供文章文件名
+用法：pnpm new-post <文件名> [文章标题]`)
   process.exit(1) // Terminate the script and return error code 1
 }
 
 let fileName = args[0]
+const title = args.slice(1).join(" ") || args[0]
 
 // Add .md extension if not present
 const fileExtensionRegex = /\.(md|mdx)$/i
@@ -32,7 +33,7 @@ const targetDir = "./src/content/posts/"
 const fullPath = path.join(targetDir, fileName)
 
 if (fs.existsSync(fullPath)) {
-  console.error(`Error: File ${fullPath} already exists `)
+  console.error(`错误：${fullPath} 已存在`)
   process.exit(1)
 }
 
@@ -43,17 +44,17 @@ if (!fs.existsSync(dirPath)) {
 }
 
 const content = `---
-title: ${args[0]}
+title: ${JSON.stringify(title)}
 published: ${getDate()}
 description: ''
 image: ''
 tags: []
 category: ''
-draft: false 
-lang: ''
+draft: true
+lang: 'zh_CN'
 ---
 `
 
 fs.writeFileSync(path.join(targetDir, fileName), content)
 
-console.log(`Post ${fullPath} created`)
+console.log(`已创建草稿：${fullPath}`)

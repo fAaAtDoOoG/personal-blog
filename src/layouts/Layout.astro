@@ -56,6 +56,9 @@ if (title) {
 
 const favicons: Favicon[] =
 	siteConfig.favicon.length > 0 ? siteConfig.favicon : defaultFavicons;
+const rssUrl = Astro.site
+	? new URL(url("/rss.xml"), Astro.site).href
+	: url("/rss.xml");
 
 // const siteLang = siteConfig.lang.replace('_', '-')
 if (!lang) {
@@ -145,7 +148,7 @@ const bannerOffset =
 
 		<slot name="head"></slot>
 
-		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={`${Astro.site}rss.xml`}/>
+		<link rel="alternate" type="application/rss+xml" title={profileConfig.name} href={rssUrl}/>
 
 	</head>
 	<body class=" min-h-screen transition " class:list={[{"lg:is-home": isHomePage, "enable-banner": enableBanner}]}
