@@ -16,8 +16,13 @@ export function GithubCardComponent(properties, children) {
 		]);
 
 	const repo = typeof properties.repo === "string" ? properties.repo : "";
-	const repositoryPattern = /^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38}[A-Za-z0-9])?\/[A-Za-z0-9](?:[A-Za-z0-9_.-]{0,98}[A-Za-z0-9_-])?$/;
-	if (Object.keys(properties).some(key => key !== "repo") || !repositoryPattern.test(repo) || repo.endsWith(".git"))
+	const repositoryPattern =
+		/^[A-Za-z0-9](?:[A-Za-z0-9-]{0,38}[A-Za-z0-9])?\/[A-Za-z0-9](?:[A-Za-z0-9_.-]{0,98}[A-Za-z0-9_-])?$/;
+	if (
+		Object.keys(properties).some((key) => key !== "repo") ||
+		!repositoryPattern.test(repo) ||
+		repo.endsWith(".git")
+	)
 		return h(
 			"div",
 			{ class: "hidden" },

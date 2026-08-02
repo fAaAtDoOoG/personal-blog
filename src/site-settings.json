@@ -1,60 +1,60 @@
 {
-  "schemaVersion": 1,
-  "site": {
-    "title": "fAaAtDoOoG 的博客",
-    "subtitle": "记录技术、项目和生活",
-    "lang": "zh_CN",
-    "themeColor": {
-      "hue": 250,
-      "fixed": false
-    },
-    "banner": {
-      "enable": false,
-      "src": "",
-      "position": "center",
-      "credit": {
-        "enable": false,
-        "text": "",
-        "url": ""
-      }
-    },
-    "toc": {
-      "enable": true,
-      "depth": 2
-    },
-    "favicon": []
-  },
-  "navigation": {
-    "links": [
-      { "kind": "preset", "preset": "home" },
-      { "kind": "preset", "preset": "archive" },
-      { "kind": "preset", "preset": "about" },
-      {
-        "kind": "link",
-        "name": "GitHub",
-        "url": "https://github.com/fAaAtDoOoG",
-        "external": true
-      }
-    ]
-  },
-  "profile": {
-    "avatar": "assets/editor-managed/avatar.png",
-    "name": "fAaAtDoOoG",
-    "bio": "记录技术、折腾和日常。",
-    "links": [
-      {
-        "name": "GitHub",
-        "icon": "fa6-brands:github",
-        "url": "https://github.com/fAaAtDoOoG"
-      }
-    ]
-  },
-  "license": {
-    "enable": true,
-    "name": "CC BY-NC-SA 4.0",
-    "url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
-  },
-  "expressiveCode": {
-    "theme": "github-dark"
-  }
+	"schemaVersion": 1,
+	"site": {
+		"title": "fAaAtDoOoG 的博客",
+		"subtitle": "记录技术、项目和生活",
+		"lang": "zh_CN",
+		"themeColor": {
+			"hue": 250,
+			"fixed": false
+		},
+		"banner": {
+			"enable": false,
+			"src": "",
+			"position": "center",
+			"credit": {
+				"enable": false,
+				"text": "",
+				"url": ""
+			}
+		},
+		"toc": {
+			"enable": true,
+			"depth": 2
+		},
+		"favicon": []
+	},
+	"navigation": {
+		"links": [
+			{ "kind": "preset", "preset": "home" },
+			{ "kind": "preset", "preset": "archive" },
+			{ "kind": "preset", "preset": "about" },
+			{
+				"kind": "link",
+				"name": "GitHub",
+				"url": "https://github.com/fAaAtDoOoG",
+				"external": true
+			}
+		]
+	},
+	"profile": {
+		"avatar": "assets/editor-managed/avatar.png",
+		"name": "fAaAtDoOoG",
+		"bio": "记录技术、折腾和日常。",
+		"links": [
+			{
+				"name": "GitHub",
+				"icon": "fa6-brands:github",
+				"url": "https://github.com/fAaAtDoOoG"
+			}
+		]
+	},
+	"license": {
+		"enable": true,
+		"name": "CC BY-NC-SA 4.0",
+		"url": "https://creativecommons.org/licenses/by-nc-sa/4.0/"
+	},
+	"expressiveCode": {
+		"theme": "github-dark"
+	}
 }
