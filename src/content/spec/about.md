@@ -1,3 +1,13 @@
+---
+title: 关于
+published: 2026-08-01
+description: 关于 fAaAtDoOoG 和这个博客
+tags: []
+category: 页面
+draft: false
+lang: zh_CN
+---
+
 # 关于
 
 你好，我是 **fAaAtDoOoG**。
