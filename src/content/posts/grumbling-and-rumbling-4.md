@@ -1,8 +1,8 @@
 ---
-title: "牢骚和一些碎碎念#3"
+title: "牢骚和一些碎碎念#4"
 published: 2026-09-01
 tags: []
-draft: true
+draft: false
 lang: zh_CN
 ---
 草。
