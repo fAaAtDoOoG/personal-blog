@@ -1,12 +1,12 @@
 ---
-title: "牢骚和一些碎碎念#2"
+title: "日常#2"
 published: 2026-08-06
 tags:
-  - 碎碎念
+  - 日常
 draft: false
 lang: zh_CN
 description: "碎碎念，日常，以及最近在做的一些事情"
-category: 碎碎念
+category: "日常"
 ---
 ok啊所以夏校基本也算是结束啦🎉
 

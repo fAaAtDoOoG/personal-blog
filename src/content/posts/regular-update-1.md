@@ -1,12 +1,12 @@
 ---
-title: "牢骚和一些碎碎念#1"
+title: "日常#1"
 published: 2026-08-02
 description: "我的一些碎碎念。"
 tags:
-  - 碎碎念
+  - 日常
 draft: false
 lang: zh_CN
-category: 碎碎念
+category: 日常
 ---
 这应该算是我的第一篇（在我这个平台上）正式的blog了吧
 

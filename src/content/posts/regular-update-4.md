@@ -1,9 +1,11 @@
 ---
-title: "牢骚和一些碎碎念#4"
+title: "日常#4"
 published: 2026-09-01
-tags: []
+tags:
+  - 日常
 draft: false
 lang: zh_CN
+category: 日常
 ---
 草。
 

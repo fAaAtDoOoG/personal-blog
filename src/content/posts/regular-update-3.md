@@ -1,9 +1,9 @@
 ---
-title: "牢骚和一些碎碎念#3"
+title: "日常#3"
 published: 2026-08-16
 tags:
-  - 碎碎念
-category: "碎碎念"
+  - 日常
+category: "日常"
 draft: false
 lang: zh_CN
 ---
