@@ -58,6 +58,13 @@
 					}
 				}
 			}
+		},
+		{
+			"includes": ["src/site-settings.json"],
+			"formatter": {
+				"indentStyle": "space",
+				"indentWidth": 2
+			}
 		}
 	]
 }
